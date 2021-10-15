@@ -29,6 +29,8 @@
                     {
                         computerScore++
                         return "You lose! Rock beats Scissors"
+                    } else {
+                        return "Not a valid choice!"
                     }
                 }
                 if (computerChoice === "Paper")
@@ -46,6 +48,8 @@
                     {
                         playerScore++
                         return "You win! Scissors beat Paper"
+                    } else {
+                        return "Not a valid choice!"
                     }
                 }
                 if (computerChoice === "Scissors")
@@ -63,6 +67,8 @@
                     else if (playerChoice === "scissors")
                     {
                         return "Tie!"
+                    } else {
+                        return "Not a valid choice!"
                     }
                 }
             }
@@ -70,7 +76,11 @@
             function game() {
                 for (let i = 0; i < 5; i++)
                 {
-                    console.log(roundPlay(prompt("Choose: Rock, Paper or Scissors"), computerPlay()))
+                    const message = roundPlay(prompt("Choose: Rock, Paper or Scissors"), computerPlay())
+                    console.log(message)
+                    if (message === "Not a valid choice!") {
+                        --i
+                    }
                 }
             }
 
