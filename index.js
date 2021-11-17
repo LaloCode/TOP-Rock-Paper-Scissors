@@ -53,6 +53,10 @@ function roundPlay(playerChoice, computerChoice) {
     rock.removeEventListener("click", playRock);
     paper.removeEventListener("click", playPaper);
     scissors.removeEventListener("click", playScissors);
+    const replayButton = document.createElement('button');
+    replayButton.textContent = 'Replay?';
+    replayButton.addEventListener('click', replayGame);
+    gameArea.appendChild(replayButton);
   }
 }
 
@@ -80,6 +84,19 @@ function playPaper() {
 
 function playScissors() {
   roundPlay("scissors", computerPlay());
+}
+
+function replayGame(e) {
+  gameState.textContent = "Waiting for input...";
+  playerScore = 0;
+  cpuScore = 0;
+  playerScoreText.textContent = `Player Score: ${playerScore}`;
+  cpuScoreText.textContent = `CPU Score: ${cpuScore}`;
+  document.getElementById('winner').remove();
+  this.remove()
+  rock.addEventListener("click", playRock);
+  paper.addEventListener("click", playPaper);
+  scissors.addEventListener("click", playScissors);
 }
 
 let playerScore = 0;
